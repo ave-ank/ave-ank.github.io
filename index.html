@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SoundIT</title>
-  <meta name="description" content="Короткое описание продукта: кому помогает и какую проблему решает." />
+  <title>SoundIt — генерация музыки из окружающих звуков</title>
+  <meta name="description" content="SoundIt — мобильное приложение для генерации музыкальных композиций из звуков окружающей среды. Записывайте мир вокруг и превращайте его в музыку." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Tailwind CDN конфиг: мягкие цвета, контейнер и шрифты
     tailwind.config = {
       theme: {
         extend: {
@@ -27,132 +26,52 @@
       darkMode: 'media'
     }
   </script>
-  <style>
-    /* Небольшие штрихи без сборки */
-    .glass { backdrop-filter: blur(10px); background: color-mix(in oklab, white 65%, transparent); }
-    @media (prefers-color-scheme: dark) { .glass { background: color-mix(in oklab, #0b0b0b 35%, transparent); } }
-  </style>
 </head>
 <body class="bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
-  <!-- Навигация -->
-  <header class="sticky top-0 z-40 border-b border-slate-200/60 bg-white/70 dark:border-slate-800/60 dark:bg-slate-950/60 glass">
-    <nav class="container flex h-16 items-center justify-between">
-      <a href="#top" class="flex items-center gap-2 font-semibold">
-        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-600 text-white">◎</span>
-        <span>SoundIT</span>
-      </a>
-      <button id="menuBtn" class="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800" aria-label="Открыть меню">≡</button>
-      <ul id="menu" class="hidden items-center gap-6 md:flex">
-        <li><a href="#features" class="hover:text-brand-600">Функции</a></li>
-        <li><a href="#screens" class="hover:text-brand-600">Скриншоты</a></li>
-        <li><a href="#how" class="hover:text-brand-600">Как это работает</a></li>
-        <li><a href="#faq" class="hover:text-brand-600">FAQ</a></li>
-        <li><a href="#contact" class="hover:text-brand-600">Контакты</a></li>
-        <li><a href="#cta" class="rounded-xl bg-brand-600 px-4 py-2 font-semibold text-white shadow-sm transition hover:bg-brand-700">Попробовать</a></li>
-      </ul>
-    </nav>
-    <!-- Мобильное меню -->
-    <div id="mobile" class="container hidden md:hidden">
-      <ul class="grid gap-2 py-3 text-sm">
-        <li><a href="#features" class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-900">Функции</a></li>
-        <li><a href="#screens" class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-900">Скриншоты</a></li>
-        <li><a href="#how" class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-900">Как это работает</a></li>
-        <li><a href="#faq" class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-900">FAQ</a></li>
-        <li><a href="#contact" class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-900">Контакты</a></li>
-        <li><a href="#cta" class="block rounded-lg bg-brand-600 px-3 py-2 text-white">Попробовать</a></li>
-      </ul>
-    </div>
-  </header>
-
   <!-- Hero -->
   <section id="top" class="relative overflow-hidden">
-    <div class="pointer-events-none absolute inset-0 -z-10 opacity-70 [background:radial-gradient(1200px_600px_at_50%_-100px,theme(colors.brand.200),transparent_60%)] dark:opacity-60"></div>
-    <div class="container grid min-h-[72vh] place-items-center py-16 md:py-24">
+    <div class="container grid min-h-[80vh] place-items-center py-20">
       <div class="max-w-3xl text-center">
-        <h1 class="text-4xl font-extrabold tracking-tight md:text-6xl">Сделайте <span class="text-brand-600">[ключевую задачу]</span> быстрее и проще</h1>
-        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Одно-два предложения о ценности продукта. Для кого это и какую проблему решает. Коротко и ясно.</p>
+        <h1 class="text-5xl font-extrabold tracking-tight md:text-6xl">SoundIt: создавайте музыку из звуков вокруг вас</h1>
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Мобильное приложение, которое записывает окружающий мир и превращает его в музыкальные композиции с помощью искусственного интеллекта.</p>
         <div class="mt-8 flex items-center justify-center gap-3">
-          <a href="#cta" class="rounded-xl bg-brand-600 px-5 py-3 font-semibold text-white shadow-md transition hover:bg-brand-700">Начать бесплатно</a>
-          <a href="#screens" class="rounded-xl border border-slate-300 px-5 py-3 font-semibold dark:border-slate-700">Посмотреть</a>
-        </div>
-        <div class="mt-12 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <img src="assets/hero-mock.png" alt="Скриншот продукта" class="rounded-xl">
+          <a href="#features" class="rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white shadow-md transition hover:bg-brand-700">Узнать больше</a>
+          <a href="#contact" class="rounded-xl border border-slate-300 px-6 py-3 font-semibold dark:border-slate-700">Связаться</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Лента логотипов (опционально) -->
-  <section aria-label="Компании" class="border-y border-slate-200 py-6 dark:border-slate-800">
-    <div class="container grid grid-cols-2 items-center gap-6 opacity-70 md:grid-cols-5">
-      <div class="text-center text-sm">Лого 1</div>
-      <div class="text-center text-sm">Лого 2</div>
-      <div class="text-center text-sm">Лого 3</div>
-      <div class="text-center text-sm">Лого 4</div>
-      <div class="text-center text-sm">Лого 5</div>
-    </div>
-  </section>
-
-  <!-- Функции -->
+  <!-- Преимущества -->
   <section id="features" class="container py-20">
     <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-3xl font-bold md:text-4xl">Ключевые преимущества</h2>
-      <p class="mt-3 text-slate-600 dark:text-slate-300">3–6 пунктов, сфокусированных на результате для пользователя.</p>
+      <h2 class="text-3xl font-bold md:text-4xl">Почему SoundIt?</h2>
+      <p class="mt-3 text-slate-600 dark:text-slate-300">SoundIt снижает порог вхождения в музыкальное творчество и открывает новые формы взаимодействия со звуком.</p>
     </div>
     <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Карточка 1 -->
-      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm transition hover:shadow-md dark:border-slate-800">
-        <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-600/20 dark:text-brand-300">⚡</div>
-        <h3 class="text-lg font-semibold">Скорость</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Описываем, как продукт ускоряет процесс в X раз.</p>
+      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm dark:border-slate-800">
+        <h3 class="text-lg font-semibold">Автоматическая генерация</h3>
+        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">ИИ-преобразование любых звуков в ритм, мелодию и полноценные треки.</p>
       </div>
-      <!-- Карточка 2 -->
-      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm transition hover:shadow-md dark:border-slate-800">
-        <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-600/20 dark:text-brand-300">🔒</div>
-        <h3 class="text-lg font-semibold">Безопасность</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">TLS/шифрование, приватность, соответствие требованиям.</p>
+      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm dark:border-slate-800">
+        <h3 class="text-lg font-semibold">Гибкие настройки</h3>
+        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Выбор жанра и инструментов для формирования уникального звучания.</p>
       </div>
-      <!-- Карточка 3 -->
-      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm transition hover:shadow-md dark:border-slate-800">
-        <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-600/20 dark:text-brand-300">🤝</div>
-        <h3 class="text-lg font-semibold">Интеграции</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Работает с популярными инструментами и API.</p>
-      </div>
-      <!-- Карточка 4 -->
-      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm transition hover:shadow-md dark:border-slate-800">
-        <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-600/20 dark:text-brand-300">📱</div>
+      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm dark:border-slate-800">
         <h3 class="text-lg font-semibold">Мобильность</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">iOS/Android, адаптивная веб-версия, офлайн-режим.</p>
+        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Приложение работает на Android (Kotlin), планируется расширение под iOS.</p>
       </div>
-      <!-- Карточка 5 -->
-      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm transition hover:shadow-md dark:border-slate-800">
-        <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-600/20 dark:text-brand-300">🧩</div>
-        <h3 class="text-lg font-semibold">Гибкость</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Настройки под ваши процессы и роли.</p>
+      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm dark:border-slate-800">
+        <h3 class="text-lg font-semibold">Научный подход</h3>
+        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Алгоритмы предобработки, фильтрации шума и извлечения музыкальных признаков.</p>
       </div>
-      <!-- Карточка 6 -->
-      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm transition hover:shadow-md dark:border-slate-800">
-        <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-600/20 dark:text-brand-300">📈</div>
-        <h3 class="text-lg font-semibold">Результат</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Цифры: +X% эффективность, −Y% затрат и т.п.</p>
+      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm dark:border-slate-800">
+        <h3 class="text-lg font-semibold">Современный ИИ</h3>
+        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Используется модель MusicGen и кодек EnCodec для точной генерации аудио.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Скриншоты / Галерея -->
-  <section id="screens" class="border-y border-slate-200 py-20 dark:border-slate-800">
-    <div class="container">
-      <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-3xl font-bold md:text-4xl">Посмотрите в действии</h2>
-        <p class="mt-3 text-slate-600 dark:text-slate-300">Добавьте 3–6 скриншотов или мокапов.</p>
-      </div>
-      <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <img src="assets/screen1.png" class="rounded-xl border border-slate-200 dark:border-slate-800" alt="Скриншот 1" />
-        <img src="assets/screen2.png" class="rounded-xl border border-slate-200 dark:border-slate-800" alt="Скриншот 2" />
-        <img src="assets/screen3.png" class="rounded-xl border border-slate-200 dark:border-slate-800" alt="Скриншот 3" />
-        <img src="assets/screen4.png" class="rounded-xl border border-slate-200 dark:border-slate-800" alt="Скриншот 4" />
-        <img src="assets/screen5.png" class="rounded-xl border border-slate-200 dark:border-slate-800" alt="Скриншот 5" />
-        <img src="assets/screen6.png" class="rounded-xl border border-slate-200 dark:border-slate-800" alt="Скриншот 6" />
+      <div class="rounded-2xl border border-slate-200 p-6 shadow-sm dark:border-slate-800">
+        <h3 class="text-lg font-semibold">Результаты исследований</h3>
+        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Подтверждено экспериментами: генерация музыки из реальных звуков возможна и качественна.</p>
       </div>
     </div>
   </section>
@@ -160,112 +79,85 @@
   <!-- Как это работает -->
   <section id="how" class="container py-20">
     <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-3xl font-bold md:text-4xl">Как это работает</h2>
-      <p class="mt-3 text-slate-600 dark:text-slate-300">3 шага — минимум текста.</p>
+      <h2 class="text-3xl font-bold md:text-4xl">Как работает SoundIt</h2>
     </div>
     <ol class="mx-auto mt-10 grid max-w-4xl gap-6 md:grid-cols-3">
       <li class="rounded-2xl border border-slate-200 p-6 dark:border-slate-800">
-        <div class="mb-2 text-sm text-slate-500">Шаг 1</div>
-        <h3 class="font-semibold">Зарегистрируйтесь</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Создайте аккаунт или установите приложение.</p>
+        <h3 class="font-semibold">1. Запишите звук</h3>
+        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Используйте микрофон устройства или загрузите файл.</p>
       </li>
       <li class="rounded-2xl border border-slate-200 p-6 dark:border-slate-800">
-        <div class="mb-2 text-sm text-slate-500">Шаг 2</div>
-        <h3 class="font-semibold">Подключите источники</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Интеграции, импорт данных, настройки.</p>
+        <h3 class="font-semibold">2. Настройте стиль</h3>
+        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Выберите жанр и инструменты, а система сгенерирует промпт.</p>
       </li>
       <li class="rounded-2xl border border-slate-200 p-6 dark:border-slate-800">
-        <div class="mb-2 text-sm text-slate-500">Шаг 3</div>
-        <h3 class="font-semibold">Получайте результат</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Автоматизация и отчёты с первыми инсайтами.</p>
+        <h3 class="font-semibold">3. Получите трек</h3>
+        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">ИИ создаст музыкальную композицию, которую можно сохранить или повторить генерацию.</p>
       </li>
     </ol>
   </section>
 
-  <!-- Частые вопросы -->
+  <!-- FAQ -->
   <section id="faq" class="container py-20">
     <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-3xl font-bold md:text-4xl">FAQ</h2>
-      <p class="mt-3 text-slate-600 dark:text-slate-300">Короткие ответы на типовые вопросы.</p>
+      <h2 class="text-3xl font-bold md:text-4xl">Часто задаваемые вопросы</h2>
     </div>
     <div class="mx-auto mt-10 max-w-3xl divide-y divide-slate-200 rounded-2xl border border-slate-200 dark:divide-slate-800 dark:border-slate-800">
-      <details class="group p-6 open:bg-slate-50 dark:open:bg-slate-900">
-        <summary class="flex cursor-pointer list-none items-center justify-between font-medium">Есть ли бесплатный тариф?
-          <span class="transition group-open:rotate-45">+</span>
-        </summary>
-        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Да, базовые функции доступны бесплатно.</p>
+      <details class="group p-6">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-medium">Есть ли бесплатный доступ?<span class="transition group-open:rotate-45">+</span></summary>
+        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Да, базовый режим записи и генерации треков доступен бесплатно.</p>
       </details>
-      <details class="group p-6 open:bg-slate-50 dark:open:bg-slate-900">
-        <summary class="flex cursor-pointer list-none items-center justify-between font-medium">Какие требования к системе?
-          <span class="transition group-open:rotate-45">+</span>
-        </summary>
-        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Работает в современных браузерах, iOS/Android.</p>
+      <details class="group p-6">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-medium">Какие требования к устройству?<span class="transition group-open:rotate-45">+</span></summary>
+        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Android 8+, планируется версия для iOS. Требуется доступ к микрофону.</p>
       </details>
-      <details class="group p-6 open:bg-slate-50 dark:open:bg-slate-900">
-        <summary class="flex cursor-pointer list-none items-center justify-between font-medium">Как связаться с поддержкой?
-          <span class="transition group-open:rotate-45">+</span>
-        </summary>
-        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Email и Telegram ниже.</p>
+      <details class="group p-6">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-medium">Как связаться с разработчиками?<span class="transition group-open:rotate-45">+</span></summary>
+        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Пишите на почту или в Telegram, мы отвечаем в течение рабочего дня.</p>
       </details>
     </div>
   </section>
 
-  <!-- Призыв к действию -->
+  <!-- CTA -->
   <section id="cta" class="relative overflow-hidden">
-    <div class="pointer-events-none absolute inset-0 -z-10 opacity-70 [background:radial-gradient(1200px_600px_at_50%_-200px,theme(colors.brand.300),transparent_60%)] dark:opacity-60"></div>
     <div class="container py-16 text-center md:py-24">
-      <h2 class="text-3xl font-bold md:text-4xl">Готовы попробовать?</h2>
-      <p class="mx-auto mt-3 max-w-2xl text-slate-700 dark:text-slate-300">Кнопка ведёт на форму или ссылку установки приложения.</p>
+      <h2 class="text-3xl font-bold md:text-4xl">Хотите попробовать SoundIt?</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-slate-700 dark:text-slate-300">Присоединяйтесь к тестированию и получайте музыку из повседневных звуков.</p>
       <div class="mt-8">
-        <a href="#contact" class="rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white shadow-md transition hover:bg-brand-700">Связаться с нами</a>
+        <a href="#contact" class="rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white shadow-md transition hover:bg-brand-700">Получить доступ</a>
       </div>
     </div>
   </section>
 
-  <!-- Контакты / Подвал -->
+  <!-- Footer -->
   <footer id="contact" class="border-t border-slate-200 py-12 dark:border-slate-800">
     <div class="container grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       <div>
-        <div class="mb-2 flex items-center gap-2 font-semibold">
-          <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-600 text-white">◎</span>
-          <span>Название продукта</span>
-        </div>
-        <p class="text-sm text-slate-600 dark:text-slate-300">Короткая подпись о миссии и ценности.</p>
+        <h3 class="font-semibold">О проекте</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">SoundIt разработан в рамках выпускной квалификационной работы Казанского федерального университета. Научная новизна — комплексный подход к генерации музыки из реальных звуков.</p>
       </div>
       <div>
         <h3 class="font-semibold">Контакты</h3>
         <ul class="mt-2 space-y-1 text-sm">
-          <li>Email: <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-brand-400" href="mailto:you@example.com">you@example.com</a></li>
-          <li>Telegram: <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-brand-400" href="https://t.me/yourhandle" target="_blank" rel="noopener">@yourhandle</a></li>
+          <li>Email: <a class="underline" href="mailto:hello@soundit.app">hello@soundit.app</a></li>
+          <li>Telegram: <a class="underline" href="https://t.me/soundit_app" target="_blank">@soundit_app</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="font-semibold">Ссылки</h3>
+        <h3 class="font-semibold">Документы</h3>
         <ul class="mt-2 space-y-1 text-sm">
           <li><a href="#features" class="hover:underline">Функции</a></li>
-          <li><a href="#screens" class="hover:underline">Скриншоты</a></li>
           <li><a href="#faq" class="hover:underline">FAQ</a></li>
         </ul>
       </div>
     </div>
     <div class="container mt-10 flex items-center justify-between border-t border-slate-200 pt-6 text-xs text-slate-500 dark:border-slate-800">
-      <div>© <span id="year"></span> Название продукта</div>
-      <div>Сделано на GitHub Pages</div>
+      <div>© <span id="year"></span> SoundIt</div>
+      <div>Разработано в КФУ</div>
     </div>
   </footer>
 
   <script>
-    // Тоггл мобильного меню и текущий год
-    const menuBtn = document.getElementById('menuBtn');
-    const menu = document.getElementById('menu');
-    const mobile = document.getElementById('mobile');
-    if (menuBtn) {
-      menuBtn.addEventListener('click', () => {
-        mobile.classList.toggle('hidden');
-      });
-      // Закрываем мобильное меню по клику на ссылку
-      [...mobile.querySelectorAll('a')].forEach(a => a.addEventListener('click', () => mobile.classList.add('hidden')));
-    }
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
