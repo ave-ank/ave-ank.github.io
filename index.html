@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Название продукта</title>
+  <meta name="description" content="Короткое описание продукта" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="wrap">
+    <h1>Название продукта</h1>
+    <p class="lead">1–2 предложения о ценности: для кого и какую проблему решает.</p>
+    <a class="btn" href="#contact">Связаться</a>
+  </header>
+
+  <section class="wrap">
+    <h2>Что умеет</h2>
+    <ul class="features">
+      <li><strong>Фича 1:</strong> кратко</li>
+      <li><strong>Фича 2:</strong> кратко</li>
+      <li><strong>Фича 3:</strong> кратко</li>
+    </ul>
+  </section>
+
+  <section class="wrap">
+    <h2>Скриншоты</h2>
+    <div class="grid">
+      <img src="assets/screen1.png" alt="Скриншот 1" />
+      <img src="assets/screen2.png" alt="Скриншот 2" />
+      <img src="assets/screen3.png" alt="Скриншот 3" />
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>FAQ / как это работает</h2>
+    <details><summary>Короткий вопрос</summary><p>Короткий ответ.</p></details>
+    <details><summary>Поддерживаемые платформы</summary><p>iOS/Android/... </p></details>
+  </section>
+
+  <section id="contact" class="wrap">
+    <h2>Контакты</h2>
+    <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+    <p>Telegram: <a href="https://t.me/yourhandle" target="_blank" rel="noopener">t.me/yourhandle</a></p>
+  </section>
+
+  <footer class="wrap small">
+    <p>© <span id="year"></span> Название продукта</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
