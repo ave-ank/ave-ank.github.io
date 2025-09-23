@@ -26,6 +26,61 @@
       darkMode: 'media'
     }
   </script>
+  <script>
+    // Надёжный аккордеон для <details> с анимацией высоты
+    (function(){
+      const items = document.querySelectorAll('#faq details');
+    
+      items.forEach((d)=>{
+        const content = d.querySelector('.faq-content');
+        if(!content) return;
+        const summary = d.querySelector('summary');
+    
+        // начальные стили
+        content.style.overflow = 'hidden';
+        content.style.height = '0px';
+        content.style.display = 'none';
+        content.style.transition = 'height 300ms ease';
+    
+        let anim = false;
+    
+        // блокируем «двоеклик» во время анимации
+        summary && summary.addEventListener('click', (e)=>{
+          if (anim) e.preventDefault();
+        });
+    
+        d.addEventListener('toggle', ()=>{
+          anim = true;
+    
+          if (d.open) {
+            content.style.display = 'block';
+            // сначала выставляем auto, чтобы измерить полную высоту
+            content.style.height = 'auto';
+            const h = content.scrollHeight + 'px';
+            // возвращаем к 0 и запускаем анимацию к полной высоте
+            content.style.height = '0px';
+            requestAnimationFrame(()=>{ content.style.height = h; });
+          } else {
+            // анимируем к 0 с текущей высоты
+            const h = content.scrollHeight + 'px';
+            content.style.height = h;
+            requestAnimationFrame(()=>{ content.style.height = '0px'; });
+          }
+        });
+    
+        content.addEventListener('transitionend', ()=>{
+          anim = false;
+          if (!d.open) {
+            content.style.display = 'none';
+          } else {
+            // после открытия снимаем фиксированную высоту
+            content.style.height = 'auto';
+          }
+        });
+      });
+    })();
+  </script>
+
 </head>
 <body class="bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
   <!-- Навигация -->
