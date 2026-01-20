@@ -171,12 +171,21 @@
         <p class="mt-3 text-slate-600 dark:text-slate-300">Здесь можно показать 4–6 скриншотов: запись, редактор, аранжировка, экспорт.</p>
       </div>
       <div class="mt-10">
-        <div class="flex space-x-6 overflow-x-auto pb-6 snap-x snap-mandatory justify-center">
-          <img src="assets/Main menu.png" alt="Скриншот 1" class="flex-shrink-0 w-auto h-[550px] rounded-2xl border-2 border-slate-200 dark:border-slate-800 snap-center shadow-lg">
-          <img src="assets/Genre choice.png" alt="Скриншот 2" class="flex-shrink-0 w-auto h-[550px] rounded-2xl border-2 border-slate-200 dark:border-slate-800 snap-center shadow-lg">
-          <img src="assets/Instruments.png" alt="Скриншот 3" class="flex-shrink-0 w-auto h-[550px] rounded-2xl border-2 border-slate-200 dark:border-slate-800 snap-center shadow-lg">
-          <img src="assets/Generation.png" alt="Скриншот 4" class="flex-shrink-0 w-auto h-[550px] rounded-2xl border-2 border-slate-200 dark:border-slate-800 snap-center shadow-lg">
-          <img src="assets/Result.png" alt="Скриншот 5" class="flex-shrink-0 w-auto h-[550px] rounded-2xl border-2 border-slate-200 dark:border-slate-800 snap-center shadow-lg">
+        <div class="flex space-x-6 overflow-x-auto pb-6 snap-x snap-mandatory justify-center" id="screenshots-container">
+          <img src="assets/Main menu.png" alt="Скриншот 1" class="screenshot flex-shrink-0 w-auto h-[550px] rounded-2xl border-2 border-slate-200 dark:border-slate-800 snap-center shadow-lg cursor-pointer hover:scale-105 transition-transform duration-200"
+            data-full="assets/Main menu.png">
+
+          <img src="assets/Genre choice.png" alt="Скриншот 2" class="screenshot flex-shrink-0 w-auto h-[550px] rounded-2xl border-2 border-slate-200 dark:border-slate-800 snap-center shadow-lg cursor-pointer hover:scale-105 transition-transform duration-200"
+            data-full="assets/Genre choice.png">
+
+          <img src="assets/Instruments.png" alt="Скриншот 3" class="screenshot flex-shrink-0 w-auto h-[550px] rounded-2xl border-2 border-slate-200 dark:border-slate-800 snap-center shadow-lg cursor-pointer hover:scale-105 transition-transform duration-200"
+            data-full="assets/Instruments.png">
+
+          <img src="assets/Generation.png" alt="Скриншот 4" class="screenshot flex-shrink-0 w-auto h-[550px] rounded-2xl border-2 border-slate-200 dark:border-slate-800 snap-center shadow-lg cursor-pointer hover:scale-105 transition-transform duration-200"
+            data-full="assets/Generation.png">
+
+          <img src="assets/Result.png" alt="Скриншот 5" class="screenshot flex-shrink-0 w-auto h-[550px] rounded-2xl border-2 border-slate-200 dark:border-slate-800 snap-center shadow-lg cursor-pointer hover:scale-105 transition-transform duration-200"
+            data-full="assets/Result.png">
         </div>
       </div>
     </div>
@@ -263,5 +272,111 @@
     // текущий год в подвале
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+  <div id="imageModal" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4">
+    <div class="relative max-w-4xl max-h-[90vh]">
+      <!-- Кнопка закрытия -->
+      <button id="closeModal" class="absolute -top-10 right-0 text-white text-2xl hover:text-gray-300 transition-colors">
+        ✕
+      </button>
+    
+      <!-- Изображение -->
+      <img id="modalImage" src="" alt="" class="max-w-full max-h-[80vh] rounded-lg">
+    
+      <!-- Описание -->
+      <p id="modalCaption" class="text-white text-center mt-2"></p>
+    
+      <!-- Навигация -->
+      <div class="flex justify-center mt-4 space-x-4">
+        <button id="prevBtn" class="text-white hover:text-gray-300 text-lg">← Назад</button>
+        <button id="nextBtn" class="text-white hover:text-gray-300 text-lg">Вперед →</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalCaption = document.getElementById('modalCaption');
+      const closeBtn = document.getElementById('closeModal');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+  
+      const screenshots = Array.from(document.querySelectorAll('.screenshot'));
+      let currentIndex = 0;
+  
+    // Открытие модального окна
+    screenshots.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        currentIndex = index;
+        updateModal();
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden'; // Блокируем скролл страницы
+      });
+    });
+  
+    // Закрытие модального окна
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  
+    // Навигация
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + screenshots.length) % screenshots.length;
+      updateModal();
+    });
+  
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % screenshots.length;
+      updateModal();
+    });
+  
+    // Клавиатура
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') prevBtn.click();
+        if (e.key === 'ArrowRight') nextBtn.click();
+      }
+    });
+  
+    function updateModal() {
+      const img = screenshots[currentIndex];
+      modalImage.src = img.dataset.full || img.src;
+      modalCaption.textContent = img.alt;
+    }
+  
+    function closeModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+  });
+</script>
+
+<style>
+/* Анимация появления */
+  #imageModal {
+    animation: fadeIn 0.3s ease;
+  }
+
+  #modalImage {
+    animation: zoomIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+  
 </body>
 </html>
